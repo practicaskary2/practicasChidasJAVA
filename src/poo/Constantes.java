@@ -38,4 +38,5 @@ class Empleadito{
 		return "El nombre del empleado es " + nombre + " y pertenece a la seccion " + seccion;
 	}
 	
+	
 }

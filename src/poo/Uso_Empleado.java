@@ -14,16 +14,17 @@ public class Uso_Empleado {
 		empleado1.subeSueldo(15);
 		System.out.println("El sueldo de " + empleado1.getNombre() + " es " + empleado1.getSueldo() + " comenzó a trabajar en " + empleado1.getAltaContrato());*/
 		
-		Empleado[] misEmpleados = new Empleado[3];
+		Empleado[] misEmpleados = new Empleado[4];
 		misEmpleados[0] = new Empleado("Yiya Rguez",100000,2008,9,23);
 		misEmpleados[1] = new Empleado("Juan Perez",85500,2002,12,18);
 		misEmpleados[2] = new Empleado("Luisito Lopez",45000,2001,11,31);
+		misEmpleados[3] = new Empleado("Yiya Rguez");
 		
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<4;i++) {
 			misEmpleados[i].subeSueldo(15);
 		}
 		
-		for(int i=0;i<3;i++) {
+		for(int i=0;i<4;i++) {
 			System.out.println("El sueldo de " + misEmpleados[i].getNombre() + " es " + misEmpleados[i].getSueldo() + " comenzó a trabajar en " + misEmpleados[i].getAltaContrato());
 		}
 		
@@ -39,6 +40,14 @@ class Empleado{
 		GregorianCalendar calendario = new GregorianCalendar(agno,mes-1,dia); 
 		altaContrato = calendario.getTime();
 		
+	}
+	
+	//Sobrecarga de método constructor
+	public Empleado(String nombresito) {
+		
+		//this en este ejemplo lo que hace es llamar a el otro método constructor
+		
+		this(nombresito,1000,2021,10,30);
 	}
 	
 	public String getNombre() {
