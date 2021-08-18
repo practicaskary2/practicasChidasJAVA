@@ -72,3 +72,29 @@ class Empleado{
 	private double sueldo;
 	private Date altaContrato;
 }
+
+class Jefatura extends Empleado{
+	
+	public Jefatura(String nom,double sue,int agno,int mes,int dia) {
+		super(nom,sue,agno,mes,dia);
+	}
+	
+	public void incentivo(double b) {
+		incentivo = b;
+	}
+	
+	//Sobreescribir el metodo de la clase padre, en este caso de la clase Empleado
+	public double getSueldo() {
+		double sueldoJefe = super.getSueldo(); //Almacena en la variable sueldoJefe, la info que viene del método getSueldo de la clase padre -> Empleado
+		return sueldoJefe + incentivo;
+	}
+	
+	
+	private double incentivo;
+	
+}
+
+
+
+
+
