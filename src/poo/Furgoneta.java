@@ -14,4 +14,8 @@ public class Furgoneta extends Coche {
 		this.plazas_extras = plazas_extras;
 		
 	}
+	
+	public String dimeDatosFurgoneta() {
+		return "La capacidad de la furgoneta es de: " + capacidad_carga + " y tiene plaza extras para " + plazas_extras + " personas";
+	}
 }

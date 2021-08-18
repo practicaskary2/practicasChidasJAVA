@@ -64,4 +64,8 @@ public class Coche {
 			return precioBase;
 		}
 	}
+	
+	public String dimeDatosGenerales() {
+		return "La plataforma del vehículo tiene " + ruedas + " ruedas, mide " + largo + " cm de largo, " + ancho + " cm de ancho " + " y tiene un peso de " + peso + " Kg.";
+	}
 }
