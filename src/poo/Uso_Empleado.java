@@ -14,18 +14,31 @@ public class Uso_Empleado {
 		empleado1.subeSueldo(15);
 		System.out.println("El sueldo de " + empleado1.getNombre() + " es " + empleado1.getSueldo() + " comenzó a trabajar en " + empleado1.getAltaContrato());*/
 		
-		Empleado[] misEmpleados = new Empleado[4];
+		Jefatura jefeRH = new Jefatura("Juan Perez", 10000, 2021,8,18);
+		jefeRH.setIncentivo(2500);
+		
+		Empleado[] misEmpleados = new Empleado[6];
 		misEmpleados[0] = new Empleado("Yiya Rguez",100000,2008,9,23);
 		misEmpleados[1] = new Empleado("Juan Perez",85500,2002,12,18);
 		misEmpleados[2] = new Empleado("Luisito Lopez",45000,2001,11,31);
 		misEmpleados[3] = new Empleado("Yiya Rguez");
+		misEmpleados[4] = jefeRH;  //POLIMORFISMO en acción, principio de sustitución.
+		misEmpleados[5] = new Jefatura("Luisito Rey", 20000, 2019,4,4);
 		
-		for(int i=0;i<4;i++) {
+		/*NOTA: Enlazado dinámico es cuando la maquina virtual de java es capaz de saber a que método de 
+		la clase padre o de la clase hija, tiene que llamar.
+		*/
+		
+		for(int i=0;i<misEmpleados.length;i++) {
 			misEmpleados[i].subeSueldo(15);
 		}
 		
-		for(int i=0;i<4;i++) {
-			System.out.println("El sueldo de " + misEmpleados[i].getNombre() + " es " + misEmpleados[i].getSueldo() + " comenzó a trabajar en " + misEmpleados[i].getAltaContrato());
+		
+		/*Al recorrer el arreglo misEmpleados, el polimorfismo entra en acción al identificar cuando llamar a el método
+        de la clase Empleado o de la clase Jefatura
+        */
+		for(Empleado e: misEmpleados) {
+			System.out.println("El sueldo de " + e.getNombre() + " es " + e.getSueldo() + " comenzó a trabajar en " + e.getAltaContrato());
 		}
 		
 	}
@@ -79,7 +92,7 @@ class Jefatura extends Empleado{
 		super(nom,sue,agno,mes,dia);
 	}
 	
-	public void incentivo(double b) {
+	public void setIncentivo(double b) {
 		incentivo = b;
 	}
 	
