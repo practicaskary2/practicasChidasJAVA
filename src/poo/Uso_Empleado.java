@@ -25,6 +25,11 @@ public class Uso_Empleado {
 		misEmpleados[4] = jefeRH;  //POLIMORFISMO en acción, principio de sustitución.
 		misEmpleados[5] = new Jefatura("Luisito Rey", 20000, 2019,4,4);
 		
+		//Casting para convertir un tipo de objeto en otro
+		Jefatura jefeFinanzas = (Jefatura) misEmpleados[5]; 
+		jefeFinanzas.setIncentivo(10000);
+		
+		
 		/*NOTA: Enlazado dinámico es cuando la maquina virtual de java es capaz de saber a que método de 
 		la clase padre o de la clase hija, tiene que llamar.
 		*/
