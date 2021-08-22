@@ -1,5 +1,6 @@
 package poo;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -38,6 +39,9 @@ public class Uso_Empleado {
 			misEmpleados[i].subeSueldo(15);
 		}
 		
+		//Ordenar usando la Clase Arrays (Esta clase proviene de la API de Java)
+		Arrays.sort(misEmpleados);
+		
 		
 		/*Al recorrer el arreglo misEmpleados, el polimorfismo entra en acción al identificar cuando llamar a el método
         de la clase Empleado o de la clase Jefatura
@@ -50,7 +54,8 @@ public class Uso_Empleado {
 
 }
 
-class Empleado{
+//Se implementa la interfaz Comparable para hacer uso del método sort de la Clase Arrays
+class Empleado implements Comparable{
 	
 	public Empleado(String nom,double sue,int agno,int mes,int dia) {
 		nombre = nom;
@@ -83,6 +88,22 @@ class Empleado{
 	public void subeSueldo(double porcentaje) {
 		double aumento = sueldo * (porcentaje/100);
 		sueldo += aumento;
+	}
+	
+	//Método obligatorio que proviene de la Interfaz Comparable
+	public int compareTo(Object miObjeto) {
+		//Casting
+		Empleado otroEmpleado = (Empleado) miObjeto;
+		
+		if(this.sueldo<otroEmpleado.sueldo) {
+			return -1;
+		}
+		
+		if(this.sueldo>otroEmpleado.sueldo) {
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 	
 	
