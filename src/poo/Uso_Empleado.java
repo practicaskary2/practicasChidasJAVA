@@ -30,6 +30,23 @@ public class Uso_Empleado {
 		Jefatura jefeFinanzas = (Jefatura) misEmpleados[5]; 
 		jefeFinanzas.setIncentivo(10000);
 		
+		System.out.println(jefeFinanzas.tomarDecisiones("Dar más días de vacaciones a empleados"));
+		
+		System.out.println("La cantidad a entregar en navidad a el Jefe " + jefeFinanzas.getNombre() + " es de " + jefeFinanzas.estableceBonus(50000));
+		System.out.println("La cantidad a entregar a el Empleado " + misEmpleados[1].getNombre() + " es de " +  misEmpleados[1].estableceBonus(500)  );
+		
+		Empleado directorComercial = new Jefatura("Pedro Pérez",3550,2005,10,23);
+		
+		//Si se puede utilizar el principio de sustitución en una Interfaz
+		Comparable ejemplo = new Empleado("Lupita González",8600,2021,8,19);
+		
+		if(directorComercial instanceof Empleado) {
+			System.out.println("Es de tipo jefatura ya que hereda de la clase Empleado");
+		}
+		
+		if(ejemplo instanceof Comparable) {
+			System.out.println("Implenta interfaz comparable");
+		}
 		
 		/*NOTA: Enlazado dinámico es cuando la maquina virtual de java es capaz de saber a que método de 
 		la clase padre o de la clase hija, tiene que llamar.
@@ -55,7 +72,7 @@ public class Uso_Empleado {
 }
 
 //Se implementa la interfaz Comparable para hacer uso del método sort de la Clase Arrays
-class Empleado implements Comparable{
+class Empleado implements Comparable,Trabajadores{
 	
 	public Empleado(String nom,double sue,int agno,int mes,int dia) {
 		nombre = nom;
@@ -106,13 +123,17 @@ class Empleado implements Comparable{
 		}
 	}
 	
-	
+	//Método que proviene de la interfaz Trabajadores
+		public double estableceBonus(double gratificacion) {
+			return Trabajadores.bonusBase + gratificacion;
+		}
+		
 	private String nombre;
 	private double sueldo;
 	private Date altaContrato;
 }
 
-class Jefatura extends Empleado{
+class Jefatura extends Empleado implements Jefes{
 	
 	public Jefatura(String nom,double sue,int agno,int mes,int dia) {
 		super(nom,sue,agno,mes,dia);
@@ -128,6 +149,15 @@ class Jefatura extends Empleado{
 		return sueldoJefe + incentivo;
 	}
 	
+	public String tomarDecisiones(String decision) {
+		return "Un miembro de la dirección ha tomado la desición de: " +  decision;
+	}
+	
+	//Método que proviene de la interfaz Trabajadores
+	public double estableceBonus(double gratificacion) {
+		double prima = 2000;
+		return Trabajadores.bonusBase + prima + gratificacion;
+	}
 	
 	private double incentivo;
 	
