@@ -18,7 +18,12 @@ public class CreandoMarcos {
 class Mimarco extends JFrame{
 	
 	public Mimarco() {
-		setSize(500,500);
+		//setSize(500,500);
+		//setLocation(500,300);
+		//setBounds incluye lo que hace setSize y setLocation
+		setBounds(500,100,400,400);
+		setVisible(false);
+		setTitle("Primer ventana de kary");
 	}
 	
 }
