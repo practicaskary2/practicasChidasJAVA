@@ -25,6 +25,7 @@ public class PruebaEventos {
 
 }
 
+//Crear Ventana
 class MarcoBotones extends JFrame{
 	
 	public MarcoBotones() {
@@ -38,7 +39,8 @@ class MarcoBotones extends JFrame{
 	
 }
 
-class LaminaBotones extends JPanel implements ActionListener {
+//Crear Panel
+class LaminaBotones extends JPanel {
 
 	JButton botonAzul = new JButton("Azul");
 	JButton botonAmarillo = new JButton("Amarillo");
@@ -48,30 +50,53 @@ class LaminaBotones extends JPanel implements ActionListener {
 		add(botonAzul);
 		add(botonAmarillo);
 		add(botonVerde);
-		botonAzul.addActionListener(this);    //1.Objeto Evento -> addActionListener (equivale a "Al hacer click")
+		
+		ColorFondo azul = new ColorFondo(Color.blue);
+		ColorFondo amarillo = new ColorFondo(Color.yellow);
+		ColorFondo verde = new ColorFondo(Color.green);
+		
+		botonAzul.addActionListener(azul);    //1.Objeto Evento -> addActionListener (equivale a "Al hacer click")
 										     //2.Objeto Fuente -> botonAzul (Es el objeto que desencadena el evento)
-											//3.Objeto Listener -> this (this hace refrencia a la clase LaminaBotones que es la que queda como oyente)
-										   //Se le dice al botonAzul que va a desencadenar un evento al hacer click y este evento lo tiene que recibir class LaminaBotones
+											//3.Objeto Listener -> azul (Instancia de la clase ColorFondo que es la que implementa la interfaz ActionListener)
+										   //Se le dice al botonAzul que va a desencadenar un evento al hacer click y este evento lo tiene que recibir la instancia de la clase ColorFondo, azul en este caso
 		
-		botonAmarillo.addActionListener(this);  
-		botonVerde.addActionListener(this);  
-	}
-	
-	public void actionPerformed(ActionEvent e) { //Este es un evento obligatorio de implementar por la implementación de la interfaz ActionListener
+		botonAmarillo.addActionListener(amarillo);  
+		botonVerde.addActionListener(verde);  
 		
-		Object botonPulsado = e.getSource();
-		if(botonPulsado == botonAzul) {
-			setBackground(Color.blue);
-		}
-		
-		else if ((botonPulsado == botonAmarillo)) {
-			setBackground(Color.yellow);
-		}
-		
-		else {
-			setBackground(Color.green);
-		}
 		
 	}
 	
+	//Clase OYENTE
+	//Esta es una clase interna para que pueda hacer uso del método setBackground que pertenece a la clase JPanel heredada en LaminaBotones
+	private class ColorFondo implements ActionListener { //Este es un evento obligatorio de implementar por la implementación de la interfaz ActionListener
+		
+		private Color colorDeFondo;
+		
+		public ColorFondo(Color c) {
+			colorDeFondo = c;
+		}
+		
+		public void actionPerformed(ActionEvent e) {
+			setBackground(colorDeFondo); //Método de la Clase JPanel
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
