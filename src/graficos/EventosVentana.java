@@ -32,27 +32,18 @@ class MarcoVentana extends JFrame {
 		
 		
 		//Instancia de la clase oyente
-		M_Ventana ventana_oyente = new M_Ventana();
-		addWindowListener(ventana_oyente);  //2.Objeto Fuente -> ¿Quién desencadena la acción? La ventana
+		/*M_Ventana ventana_oyente = new M_Ventana();
+		addWindowListener(ventana_oyente);  //2.Objeto Fuente -> ¿Quién desencadena la acción? La ventana*/
+		
+		addWindowListener(new M_Ventana()); //NOTA: Se puede instanciar la clase directamente en el método
 		
 	}
 }
 
 //Clase OYENTE
-class M_Ventana implements WindowListener {//3.Objeto Listener
-
-	@Override
-	public void windowOpened(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void windowClosing(WindowEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Cerrando Ventana");
-		
-	}
+//M_Ventana hereda de la clase adaptadora WindowAdapter en lugar de implementar la interfaz windowListener
+//esto es con el objetivo de no tener que agregar todos los métodos obligatorios de la interfaz, solo aquéllos que realmente vamos a usar
+class M_Ventana extends WindowAdapter {//3.Objeto Listener
 
 	@Override
 	public void windowClosed(WindowEvent e) {
@@ -68,23 +59,9 @@ class M_Ventana implements WindowListener {//3.Objeto Listener
 	}
 
 	@Override
-	public void windowDeiconified(WindowEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void windowActivated(WindowEvent e) {
 		// TODO Auto-generated method stub
 		System.out.println("Ventana en primer plano");
 		
-	}
-
-	@Override
-	public void windowDeactivated(WindowEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("Ventana desactivada");
-		
-	}
-	
+	}	
 }
