@@ -30,6 +30,7 @@ class MimarcoVentana extends JFrame{
 	
 }
 
+//Clase OYENTE
 class VentanaCambios implements WindowStateListener {
 
 	@Override
