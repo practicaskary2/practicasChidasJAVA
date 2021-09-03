@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -40,6 +42,11 @@ class PanelAccion extends JPanel {
 
 public PanelAccion() {
 	
+	//Instancias de la clase oyente
+	AccionColor accionAzul = new AccionColor("Azul",Color.BLUE);
+	AccionColor accionAmarillo = new AccionColor("Amarillo",Color.YELLOW);
+	AccionColor accionVerde = new AccionColor("Amarillo",Color.GREEN);
+	
 	JButton botonAzul = new JButton("Azul");
 	JButton botonAmarillo = new JButton("Amarillo");
 	JButton botonVerde = new JButton("Verde");
@@ -53,6 +60,12 @@ public PanelAccion() {
 
 class AccionColor extends AbstractAction {
 	
+	public AccionColor(String nombre,Color colorBoton) {
+		putValue(Action.NAME,nombre);
+		putValue(Action.SHORT_DESCRIPTION,"El botón es color " + nombre);
+		putValue("colorDeFondo",colorBoton);
+		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
