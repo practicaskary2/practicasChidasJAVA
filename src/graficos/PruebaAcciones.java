@@ -30,8 +30,8 @@ class MarcoAcciones extends JFrame{
 		
 		setTitle("Mi marco acciones");
 
-		LaminaBotones miLaminaBotones = new LaminaBotones();
-		add(miLaminaBotones);
+		PanelAccion miPanelBotones = new PanelAccion();
+		add(miPanelBotones);
 		
 	}
 	
@@ -45,20 +45,24 @@ public PanelAccion() {
 	//Instancias de la clase oyente
 	AccionColor accionAzul = new AccionColor("Azul",Color.BLUE);
 	AccionColor accionAmarillo = new AccionColor("Amarillo",Color.YELLOW);
-	AccionColor accionVerde = new AccionColor("Amarillo",Color.GREEN);
+	AccionColor accionVerde = new AccionColor("Verde",Color.GREEN);
 	
 	JButton botonAzul = new JButton("Azul");
 	JButton botonAmarillo = new JButton("Amarillo");
 	JButton botonVerde = new JButton("Verde");
 	
-	add(botonAzul);
+	add(new JButton(accionAzul));
+	add(new JButton(accionAmarillo));
+	add(new JButton(accionVerde));
+	
+	
+	/*add(botonAzul);
 	add(botonAmarillo);
-	add(botonVerde);
+	add(botonVerde);*/
 	
 	}
-}
 
-class AccionColor extends AbstractAction {
+private class AccionColor extends AbstractAction {
 	
 	public AccionColor(String nombre,Color colorBoton) {
 		putValue(Action.NAME,nombre);
@@ -68,11 +72,16 @@ class AccionColor extends AbstractAction {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) { //Se indica que tiene que hacer cuando los botones sean pulsados
 		// TODO Auto-generated method stub
 		
-	} 
-	
-	
+		//getValue corresponde a la clase JPanel, por eso se modifica la clase AccionColor para que sea interna y reconozca el método
+		Color c = (Color)getValue("colorDeFondo");
+		setBackground(c);
+		System.out.println("El color del botón es: " + getValue(Action.NAME));
+	} 	
+  }
 }
+
+
 
