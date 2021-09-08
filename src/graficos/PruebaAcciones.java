@@ -6,10 +6,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.ActionMap;
 import javax.swing.Icon;
+import javax.swing.InputMap;
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
+
 
 public class PruebaAcciones {
 
@@ -59,6 +64,22 @@ public PanelAccion() {
 	/*add(botonAzul);
 	add(botonAmarillo);
 	add(botonVerde);*/
+	
+	
+	InputMap mapaEntrada = getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+	
+	//Agrega un vínculo entre la combinación de teclas y la acción -> keyStroke to actionMapKey
+	mapaEntrada.put(KeyStroke.getKeyStroke("ctrl B"), "fondo_azul");
+	mapaEntrada.put(KeyStroke.getKeyStroke("ctrl Y"), "fondo_amarillo");
+	mapaEntrada.put(KeyStroke.getKeyStroke("ctrl G"), "fondo_verde");
+	
+	//Crear un mapa de acción 
+	ActionMap mapaAccion = getActionMap();
+	
+	mapaAccion.put("fondo_azul", accionAzul);
+	mapaAccion.put("fondo_amarillo", accionAmarillo);
+	mapaAccion.put("fondo_verde", accionVerde);
+	
 	
 	}
 
