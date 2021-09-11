@@ -1,5 +1,6 @@
 package graficos;
 
+import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
@@ -35,16 +36,20 @@ class LaminaLayout1 extends JPanel{
 	public LaminaLayout1() {
 		
 		//Indicarle a el marco/ventana como van a estar acomodados los elementos de la lamina
-		setLayout(new FlowLayout(FlowLayout.CENTER,40,100));
+		setLayout(new BorderLayout(10,10));
 		
 		JButton botonAzul = new JButton("Azul");
 		JButton botonAmarillo = new JButton("Amarillo");
 		JButton botonVerde = new JButton("Verde");
+		JButton botonMorado = new JButton("Morado");
+		JButton botonRosa = new JButton("Rosa");
 			
 		
-		add(botonAzul);
-		add(botonAmarillo);
-		add(botonVerde);
+		add(botonAzul,BorderLayout.NORTH);
+		add(botonAmarillo,BorderLayout.SOUTH);
+		add(botonVerde,BorderLayout.EAST);
+		add(botonMorado,BorderLayout.WEST);
+		add(botonRosa);
 	}
 	
 	
