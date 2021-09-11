@@ -24,13 +24,8 @@ class MarcoLayout1 extends JFrame{
 		setBounds(500,100,400,400);
 		setTitle("Layout1");
 		
-		LaminaLayout miLaminaLayout1 = new LaminaLayout();
-		
-		//Indicarle a el marco/ventana como van a estar acomodados los elementos de la lamina
-		FlowLayout acomodo = new FlowLayout(FlowLayout.LEFT);
-		 miLaminaLayout1.setLayout(acomodo); // miLaminaLayout1.setLayout(new FlowLayout(FlowLayout.LEFT));
-		 
-		 add(miLaminaLayout1);
+		LaminaLayout1 miLaminaLayout1 = new LaminaLayout1(); 
+		add(miLaminaLayout1);
 	}
 	
 }
@@ -38,6 +33,10 @@ class MarcoLayout1 extends JFrame{
 class LaminaLayout1 extends JPanel{
 	
 	public LaminaLayout1() {
+		
+		//Indicarle a el marco/ventana como van a estar acomodados los elementos de la lamina
+		setLayout(new FlowLayout(FlowLayout.CENTER,40,100));
+		
 		JButton botonAzul = new JButton("Azul");
 		JButton botonAmarillo = new JButton("Amarillo");
 		JButton botonVerde = new JButton("Verde");
