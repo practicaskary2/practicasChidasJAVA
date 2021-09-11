@@ -26,7 +26,12 @@ class MarcoLayout1 extends JFrame{
 		setTitle("Layout1");
 		
 		LaminaLayout1 miLaminaLayout1 = new LaminaLayout1(); 
-		add(miLaminaLayout1);
+		LaminaLayout2 miLaminaLayout2 = new LaminaLayout2(); 
+		
+		//Al agregar las laminas/paneles a el marco/ventanam se les tiene que indicar el layout porque si no se sobreponen y solo se mostraría miLaminaLayout2
+		add(miLaminaLayout1,BorderLayout.NORTH);
+		add(miLaminaLayout2,BorderLayout.SOUTH);
+		
 	}
 	
 }
@@ -36,21 +41,55 @@ class LaminaLayout1 extends JPanel{
 	public LaminaLayout1() {
 		
 		//Indicarle a el marco/ventana como van a estar acomodados los elementos de la lamina
-		setLayout(new BorderLayout(10,10));
+		setLayout(new FlowLayout(FlowLayout.LEFT));
 		
 		JButton botonAzul = new JButton("Azul");
 		JButton botonAmarillo = new JButton("Amarillo");
-		JButton botonVerde = new JButton("Verde");
-		JButton botonMorado = new JButton("Morado");
-		JButton botonRosa = new JButton("Rosa");
-			
-		
-		add(botonAzul,BorderLayout.NORTH);
-		add(botonAmarillo,BorderLayout.SOUTH);
-		add(botonVerde,BorderLayout.EAST);
-		add(botonMorado,BorderLayout.WEST);
-		add(botonRosa);
+
+		add(botonAzul);
+		add(botonAmarillo);
 	}
 	
 	
 }
+
+
+class LaminaLayout2 extends JPanel{
+	
+	public LaminaLayout2() {
+		
+		//Indicarle a el marco/ventana como van a estar acomodados los elementos de la lamina
+		setLayout(new BorderLayout());
+		
+		JButton botonVerde = new JButton("Verde");
+		JButton botonMorado = new JButton("Morado");
+		JButton botonRosa = new JButton("Rosa");
+			
+		add(botonVerde,BorderLayout.NORTH);
+		add(botonMorado,BorderLayout.SOUTH);
+		add(botonRosa,BorderLayout.WEST);
+	}
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
