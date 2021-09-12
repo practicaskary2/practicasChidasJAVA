@@ -28,7 +28,7 @@ class MarcoLayout1 extends JFrame{
 		LaminaLayout1 miLaminaLayout1 = new LaminaLayout1(); 
 		LaminaLayout2 miLaminaLayout2 = new LaminaLayout2(); 
 		
-		//Al agregar las laminas/paneles a el marco/ventanam se les tiene que indicar el layout porque si no se sobreponen y solo se mostraría miLaminaLayout2
+		//Al agregar las laminas/paneles a el marco/ventana se les tiene que indicar el layout porque si no se sobreponen y solo se mostraría miLaminaLayout2
 		add(miLaminaLayout1,BorderLayout.NORTH);
 		add(miLaminaLayout2,BorderLayout.SOUTH);
 		
