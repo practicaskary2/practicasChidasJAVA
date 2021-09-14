@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -29,11 +31,14 @@ class MarcoCalculadora extends JFrame{
 		setBounds(500,100,400,400);
 		setTitle("Calculadora");
 		
+		
 		LaminaCalculadoraPrincipal miLaminaLayoutCalculadora = new LaminaCalculadoraPrincipal();
 		add(miLaminaLayoutCalculadora,BorderLayout.NORTH);
 		
 		 LaminaCalculadoraBotones miLaminaConBotones = new LaminaCalculadoraBotones();
 		 add(miLaminaConBotones,BorderLayout.CENTER);
+		 
+		 //pack(); //Con este metodo se le da un tamaño y posición predeterminado a los elementos
 		
 	}
 	
@@ -44,7 +49,8 @@ class LaminaCalculadoraPrincipal extends JPanel{
 	public LaminaCalculadoraPrincipal() {
 		//Indicarle a el marco/ventana como van a estar acomodados los elementos de la lamina
 				setLayout(new BorderLayout());
-				TextField cajaTexto = new TextField("0");
+				JButton cajaTexto = new JButton("0");
+				cajaTexto.setEnabled(false);
 				add(cajaTexto);
 				
 				
@@ -74,3 +80,23 @@ class LaminaCalculadoraBotones extends JPanel{
 	
 	
 }
+
+
+class InsertarNumero implements ActionListener{
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+
+
+
+
+
+
+
+
