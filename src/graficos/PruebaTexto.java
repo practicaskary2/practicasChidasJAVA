@@ -36,7 +36,8 @@ class MarcoTexto extends JFrame{
 
 class LaminaTexto extends JPanel{
 	
-	JTextField caja1; //Se declara fuera del metodo para poder hacer uso en la clase interna
+	private JTextField caja1; //Se declara fuera del metodo para poder hacer uso en la clase interna
+	private JLabel validacion; //Etiqueta que muestra el resultado de la validacion de mail
 	
 	public LaminaTexto() {
 		
@@ -51,6 +52,9 @@ class LaminaTexto extends JPanel{
 		miBoton.addActionListener(miEvento); //El boton queda a la escucha
 		add(miBoton);
 		
+		validacion = new JLabel();
+		add(validacion);
+		
 	
 	}
 	
@@ -61,10 +65,31 @@ class LaminaTexto extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			System.out.println(caja1.getText().trim());
+			
+			int correcto = 0;
+			String email = caja1.getText().trim();
+			
+			//Validar correo
+			for(int i=0; i < email.length();i++) {
+				
+				if(email.charAt(i) == '@') {
+		          correcto++;    
+			}
+			
 		}
+			
+			System.out.println(correcto + " arrobas");
+			
+			if(correcto != 1) {
+				validacion.setText("Mail incorrecto");
+				 System.out.println("Mail incorrecto");
+			} else {
+				validacion.setText("Tu Mail es correcto");
+				System.out.println("Felicidades tu Mail es correcto");	
+			}
 		
 	}
+  }
 }
 
 
